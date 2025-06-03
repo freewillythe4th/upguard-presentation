@@ -21,14 +21,16 @@
             color: #f8fafc;
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            /* overflow: hidden; */
         }
         
         .slide {
             display: none;
             min-height: 100vh;
-            padding: 2rem;
+            height: auto;
+            padding: 1rem 0.5rem;
             background: linear-gradient(135deg, var(--upguard-dark) 0%, #0f1419 50%, var(--upguard-dark) 100%);
+            overflow-y: auto;
         }
         
         .slide.active {
@@ -166,25 +168,25 @@
 <body>
     <!-- Slide 1: Title -->
     <div class="slide active">
-        <div class="max-w-6xl text-center space-y-8 relative z-10">
+        <div class="max-w-6xl w-full text-center space-y-8 relative z-10 px-2 md:px-8 py-8 md:py-16">
             <div class="flex flex-col items-center justify-center mb-8">
                 <img src="upguard-white.png" alt="UpGuard Logo" class="h-12 md:h-16 w-auto" style="max-height: 64px;">
             </div>
             
-            <h1 class="text-6xl font-bold gradient-text relative z-10">
+            <h1 class="text-4xl md:text-6xl font-bold gradient-text relative z-10">
                 Trust Exchange Evolution
             </h1>
-            <h2 class="text-3xl font-medium text-gray-400">
+            <h2 class="text-2xl md:text-3xl font-medium text-gray-400">
                 Market Discovery for Continuous Compliance
             </h2>
             
-            <div class="mt-12 p-6 card">
-                <p class="text-2xl font-semibold text-blue-500">
+            <div class="mt-12 p-4 md:p-6 card">
+                <p class="text-xl md:text-2xl font-semibold text-blue-500">
                     Solving the Mid-Market/Enterprise Audit Evidence Problem
                 </p>
             </div>
             
-            <div class="mt-16 text-lg text-gray-400">
+            <div class="mt-16 text-base md:text-lg text-gray-400">
                 <p>Presented by: Will Mulholland</p>
             </div>
         </div>
@@ -192,7 +194,7 @@
 
     <!-- Slide 2: The Market Reality -->
     <div class="slide">
-        <div class="max-w-6xl w-full flex flex-col justify-center min-h-screen" style="min-height: 100vh;">
+        <div class="max-w-6xl w-full flex flex-col justify-center min-h-screen px-2 md:px-8 py-8 md:py-16">
             <h1 class="text-4xl font-bold mb-8 text-center">The Market Reality</h1>
             
             <div class="card bg-gradient-to-r from-red-600/10 to-red-500/10 border-red-500/20 mb-8 mt-2">
@@ -238,7 +240,7 @@
 
     <!-- Slide 3: The Problem MMEs Face Every Day -->
     <div class="slide">
-        <div class="max-w-6xl w-full">
+        <div class="max-w-6xl w-full px-2 md:px-8 py-8 md:py-16">
             <h1 class="text-4xl font-bold mb-8 text-center">The Problem MMEs Face Every Day</h1>
             
             <div class="card mb-8">
@@ -294,7 +296,7 @@
 
     <!-- Slide 4: Competitors Are Moving Upmarket But Missing the Point -->
     <div class="slide">
-        <div class="max-w-6xl w-full">
+        <div class="max-w-6xl w-full px-2 md:px-8 py-8 md:py-16">
             <h1 class="text-4xl font-bold mb-8 text-center">Competitors Are Moving Upmarket But Missing the Point</h1>
             
             <div class="card mb-8">
@@ -367,7 +369,7 @@
 
     <!-- Slide 5: What We Need to Validate with MMEs -->
     <div class="slide">
-        <div class="max-w-6xl w-full">
+        <div class="max-w-6xl w-full px-2 md:px-8 py-8 md:py-16">
             <h1 class="text-4xl font-bold mb-8 text-center">What We Need to Validate with MMEs</h1>
             
             <div class="card mb-8">
@@ -429,7 +431,7 @@
 
     <!-- Slide 6: UpGuard Can Win This Market -->
     <div class="slide">
-        <div class="max-w-6xl w-full">
+        <div class="max-w-6xl w-full px-2 md:px-8 py-8 md:py-16">
             <h1 class="text-4xl font-bold mb-8 text-center">UpGuard Can Win This Market</h1>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
@@ -491,7 +493,7 @@
 
     <!-- Slide 7: My Discovery Approach -->
     <div class="slide">
-        <div class="max-w-6xl w-full">
+        <div class="max-w-6xl w-full px-2 md:px-8 py-8 md:py-16">
             <h1 class="text-4xl font-bold mb-8 text-center">My Discovery Approach</h1>
             <h2 class="text-xl text-center text-gray-400 mb-12">4-Week Market Discovery Process</h2>
             
@@ -540,7 +542,7 @@
 
     <!-- Slide 8: How I'll Research Customer Needs -->
     <div class="slide">
-        <div class="max-w-6xl w-full">
+        <div class="max-w-6xl w-full px-2 md:px-8 py-8 md:py-16">
             <h1 class="text-4xl font-bold mb-8 text-center">How I'll Research Customer Needs</h1>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -624,7 +626,7 @@
 
     <!-- Slide 9: Discovery Will Define Key Capabilities MMEs Need -->
     <div class="slide">
-        <div class="max-w-6xl w-full">
+        <div class="max-w-6xl w-full px-2 md:px-8 py-8 md:py-16">
             <h1 class="text-4xl font-bold mb-8 text-center">Discovery Will Define Key Capabilities MMEs Need</h1>
             <p class="text-xl text-center text-gray-400 mb-12">Three Areas We'll Explore Based on Validated Pain Points</p>
             
@@ -664,7 +666,7 @@
 
     <!-- Slide 10: Discovery Will Inform Our Go-to-Market Strategy -->
     <div class="slide">
-        <div class="max-w-6xl w-full">
+        <div class="max-w-6xl w-full px-2 md:px-8 py-8 md:py-16">
             <h1 class="text-4xl font-bold mb-8 text-center">Discovery Will Inform Our Go-to-Market Strategy</h1>
             <p class="text-xl text-center text-gray-400 mb-12">GTM Elements We'll Define Through Customer Research</p>
             
@@ -715,7 +717,7 @@
 
     <!-- Slide 11: How We'll Measure Success -->
     <div class="slide">
-        <div class="max-w-6xl w-full">
+        <div class="max-w-6xl w-full px-2 md:px-8 py-8 md:py-16">
             <h1 class="text-4xl font-bold mb-8 text-center">How We'll Measure Success</h1>
             
             <div class="card bg-gradient-to-r from-blue-600/10 to-blue-500/10 border-blue-500/20 mb-8">
@@ -778,7 +780,7 @@
 
     <!-- Slide 12: Timeline & Next Steps -->
     <div class="slide">
-        <div class="max-w-6xl w-full">
+        <div class="max-w-6xl w-full px-2 md:px-8 py-8 md:py-16">
             <h1 class="text-4xl font-bold mb-8 text-center">Timeline & Next Steps</h1>
             
             <div class="space-y-6 mb-8">
@@ -830,7 +832,7 @@
 
     <!-- Slide 13: Why This Approach Works -->
     <div class="slide">
-        <div class="max-w-6xl w-full">
+        <div class="max-w-6xl w-full px-2 md:px-8 py-8 md:py-16">
             <h1 class="text-4xl font-bold mb-12 text-center">Why This Approach Works</h1>
             
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
