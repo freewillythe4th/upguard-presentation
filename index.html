@@ -1,1 +1,1024 @@
- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UpGuard Trust Exchange Evolution - Market Discovery for Continuous Compliance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --upguard-blue: #4169e1;
+            --upguard-dark: #0a0f1c;
+            --upguard-card: #1a1f2e;
+            --upguard-border: #2a2f3e;
+        }
+        
+        body {
+            font-family: 'Inter Tight', sans-serif;
+            background: var(--upguard-dark);
+            color: #f8fafc;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .slide {
+            display: none;
+            min-height: 100vh;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--upguard-dark) 0%, #0f1419 50%, var(--upguard-dark) 100%);
+        }
+        
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .card {
+            background: var(--upguard-card);
+            border: 1px solid var(--upguard-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            border-color: currentColor;
+            background: linear-gradient(135deg, var(--upguard-card) 0%, #1f2433 100%);
+        }
+        
+        /* Add specific hover effects for gradient cards */
+        .card.bg-gradient-to-br:hover,
+        .card.bg-gradient-to-r:hover {
+            background: inherit;
+            filter: brightness(1.1);
+        }
+        
+        .btn {
+            background: var(--upguard-blue);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(65, 105, 225, 0.3);
+        }
+        
+        .nav-controls {
+            position: fixed;
+            left: 2rem;
+            top: 2rem;
+            background: rgba(26, 31, 46, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--upguard-border);
+            border-radius: 50px;
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .nav-controls:hover {
+            opacity: 1;
+        }
+        
+        .slide-dots {
+            position: fixed;
+            left: 2rem;
+            top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .slide-dots:hover {
+            opacity: 1;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .dot.active {
+            background: var(--upguard-blue);
+            transform: scale(1.25);
+        }
+        
+        .progress-bar {
+            width: 100px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--upguard-blue);
+            transition: width 0.3s ease;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #f8fafc 0%, var(--upguard-blue) 50%, #f8fafc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.15;
+            padding-bottom: 0.15em;
+        }
+
+        .list-item {
+            transition: all 0.2s ease;
+            padding: 0.5rem;
+            border-radius: 8px;
+            margin: 0 -0.5rem;
+        }
+
+        .list-item:hover {
+            background: rgba(65, 105, 225, 0.1);
+            transform: translateX(4px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Title -->
+    <div class="slide active">
+        <div class="max-w-6xl text-center space-y-8 relative z-10">
+            <div class="flex items-center justify-center mb-8">
+                <div class="w-12 h-12 bg-blue-600 rounded-lg mr-4 flex items-center justify-center">
+                    <i data-lucide="shield" class="w-6 h-6 text-white"></i>
+                </div>
+                <span class="text-2xl font-bold text-blue-500">UpGuard</span>
+            </div>
+            
+            <h1 class="text-6xl font-bold gradient-text relative z-10">
+                Trust Exchange Evolution
+            </h1>
+            <h2 class="text-3xl font-medium text-gray-400">
+                Market Discovery for Continuous Compliance
+            </h2>
+            
+            <div class="mt-12 p-6 card">
+                <p class="text-2xl font-semibold text-blue-500">
+                    Solving the Mid-Market/Enterprise Audit Evidence Problem
+                </p>
+            </div>
+            
+            <div class="mt-16 text-lg text-gray-400">
+                <p>Presented by: Will Mulholland</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 2: The Market Reality -->
+    <div class="slide">
+        <div class="max-w-6xl w-full">
+            <h1 class="text-4xl font-bold mb-12 text-center">The Market Reality</h1>
+            
+            <div class="card bg-gradient-to-r from-red-600/10 to-red-500/10 border-red-500/20 mb-8">
+                <h2 class="text-2xl font-semibold mb-6 text-center text-red-400">
+                    Mid-Market/Enterprise (MME) companies are stuck in a broken compliance cycle
+                </h2>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i data-lucide="alert-circle" class="w-5 h-5 text-red-500 mr-3 mt-1"></i>
+                            <p class="text-gray-400">Buy "automated" tools but still scramble for evidence when auditors arrive</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="clock" class="w-5 h-5 text-red-500 mr-3 mt-1"></i>
+                            <p class="text-gray-400">Spend months preparing for annual audits, then can't prove controls worked all year</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i data-lucide="shield-alert" class="w-5 h-5 text-red-500 mr-3 mt-1"></i>
+                            <p class="text-gray-400">New regulations (DORA, NIST CSF 2.0) demand continuous monitoring and verifiable proof</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="link-2-off" class="w-5 h-5 text-red-500 mr-3 mt-1"></i>
+                            <p class="text-gray-400">Gap between vendor promises of "automation" and what MME teams actually experience</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card bg-gradient-to-r from-blue-600/10 to-green-600/10 border-blue-500/20">
+                <h3 class="text-xl font-semibold mb-4 flex items-center justify-center">
+                    <i data-lucide="target" class="w-6 h-6 text-blue-500 mr-3"></i>
+                    The Opportunity
+                </h3>
+                <p class="text-center text-lg text-gray-400">
+                    Trust Exchange has strong PLG traction. The market is moving from annual check-ups to continuous proof. <span class="text-blue-500 font-semibold">We can own this shift.</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: The Problem MMEs Face Every Day -->
+    <div class="slide">
+        <div class="max-w-6xl w-full">
+            <h1 class="text-4xl font-bold mb-8 text-center">The Problem MMEs Face Every Day</h1>
+            
+            <div class="card mb-8">
+                <h2 class="text-2xl font-semibold mb-6 text-red-400">The Audit Evidence Gap</h2>
+                <div class="flex items-center mb-6">
+                    <img src="expert.jpeg" alt="GRC Expert" class="w-16 h-16 rounded-full border-2 border-blue-500 shadow-lg mr-4 object-cover" style="object-position: 60% 40%;">
+                    <blockquote class="italic text-xl text-gray-400 border-l-4 border-red-500/50 pl-6">
+                        "All of the tools can test your technical configuration...but they don't have the ability to provide auditable evidence...At the time when you actually have to go through audit, it's still a manual evidence effort."
+                    </blockquote>
+                </div>
+                <p class="text-right text-sm text-gray-500">- GRC Expert</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="card bg-gradient-to-br from-green-900/20 to-green-600/20">
+                    <h3 class="text-xl font-semibold mb-4 text-green-400">What Tools Do Now:</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>
+                            <span>Test configurations and generate dashboards</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>
+                            <span>Automate basic control testing</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>
+                            <span>Tell you if you're compliant</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card bg-gradient-to-br from-red-900/20 to-red-600/20">
+                    <h3 class="text-xl font-semibold mb-4 text-red-400">What MMEs Still Do Manually:</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i data-lucide="x-circle" class="w-5 h-5 text-red-500 mr-3"></i>
+                            <span>Collect screenshots, log snapshots, and documentation</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="x-circle" class="w-5 h-5 text-red-500 mr-3"></i>
+                            <span>Map evidence to specific controls</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="x-circle" class="w-5 h-5 text-red-500 mr-3"></i>
+                            <span>Scramble when auditors show up</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Competitors Are Moving Upmarket But Missing the Point -->
+    <div class="slide">
+        <div class="max-w-6xl w-full">
+            <h1 class="text-4xl font-bold mb-8 text-center">Competitors Are Moving Upmarket But Missing the Point</h1>
+            
+            <div class="card mb-8">
+                <h2 class="text-xl font-semibold mb-6 flex items-center">
+                    <i data-lucide="trending-up" class="w-6 h-6 text-blue-500 mr-3"></i>
+                    Market Activity Validates MME Demand
+                </h2>
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <i data-lucide="building" class="w-5 h-5 text-blue-500 mr-3 mt-1"></i>
+                        <div>
+                            <p><span class="font-semibold">Vanta & Drata:</span> Moving upmarket, positioning as "trust management platforms"</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i data-lucide="dollar-sign" class="w-5 h-5 text-green-500 mr-3 mt-1"></i>
+                        <div>
+                            <p><span class="font-semibold">Recent validation:</span> Drata acquired SafeBase for $250M (direct Trust Exchange competitor)</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i data-lucide="message-square" class="w-5 h-5 text-orange-500 mr-3 mt-1"></i>
+                        <div>
+                            <p><span class="font-semibold">But MME users still complain:</span></p>
+                            <ul class="mt-2 ml-4 space-y-1 text-sm text-gray-400">
+                                <li>"Integration issues" and "missing features" (Vanta on G2)</li>
+                                <li>"Limited integrations" (Drata on G2)</li>
+                                <li>Manual work for custom controls in complex environments</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card bg-gradient-to-r from-purple-600/10 to-purple-500/10 border-purple-500/20">
+                <h3 class="text-xl font-semibold mb-4 text-center text-purple-400">The Gaps We Can Fill:</h3>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                    <div class="flex items-start gap-3">
+                        <i data-lucide="file-text" class="w-6 h-6 text-purple-400 mt-1"></i>
+                        <div>
+                            <p class="font-semibold text-purple-300">Audit Evidence:</p>
+                            <p class="text-sm text-gray-400">No one generates auditor-ready documentation automatically</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i data-lucide="plug" class="w-6 h-6 text-purple-400 mt-1"></i>
+                        <div>
+                            <p class="font-semibold text-purple-300">Integration Flexibility:</p>
+                            <p class="text-sm text-gray-400">Lack of open APIs for custom environments (Workato, complex HRIS)</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i data-lucide="server" class="w-6 h-6 text-purple-400 mt-1"></i>
+                        <div>
+                            <p class="font-semibold text-purple-300">Data Control:</p>
+                            <p class="text-sm text-gray-400">MMEs want hybrid/on-premise options</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i data-lucide="brain" class="w-6 h-6 text-purple-400 mt-1"></i>
+                        <div>
+                            <p class="font-semibold text-purple-300">Context Awareness:</p>
+                            <p class="text-sm text-gray-400">Generic control libraries don't fit their architecture</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: What We Need to Validate with MMEs -->
+    <div class="slide">
+        <div class="max-w-6xl w-full">
+            <h1 class="text-4xl font-bold mb-8 text-center">What We Need to Validate with MMEs</h1>
+            
+            <div class="card mb-8">
+                <h2 class="text-xl font-semibold mb-6">From Initial Research & Expert Insights:</h2>
+                <blockquote class="italic text-lg text-gray-400 border-l-4 border-blue-500/50 pl-6 mb-4">
+                    "The tool should be able to read PDF reports... derive context and risk from them, and automatically document findings. If you do this, the tool will really stand out."
+                </blockquote>
+                <p class="text-right text-sm text-gray-500">- Security Professional interviewed during initial research</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="card">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-400">Key Hypotheses to Test:</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <span class="text-blue-500 font-bold mr-3">1.</span>
+                            <div>
+                                <p class="font-semibold">Manual Evidence Collection Persists:</p>
+                                <p class="text-sm text-gray-400">Do teams still scramble for evidence despite "automated" tools?</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-blue-500 font-bold mr-3">2.</span>
+                            <div>
+                                <p class="font-semibold">Integration Gaps Block Adoption:</p>
+                                <p class="text-sm text-gray-400">Are tools failing with Workato, complex HRIS setups, custom workflows?</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-blue-500 font-bold mr-3">3.</span>
+                            <div>
+                                <p class="font-semibold">Generic Controls Don't Fit:</p>
+                                <p class="text-sm text-gray-400">Do tools struggle to understand specific MME architectures?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="text-xl font-semibold mb-4 text-green-400">Discovery Questions:</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <i data-lucide="help-circle" class="w-5 h-5 text-green-500 mr-3 mt-1"></i>
+                            <p>Do SOC teams primarily drive these buying decisions and hold budget influence?</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="help-circle" class="w-5 h-5 text-green-500 mr-3 mt-1"></i>
+                            <p>What evidence formats do auditors actually accept?</p>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="help-circle" class="w-5 h-5 text-green-500 mr-3 mt-1"></i>
+                            <p>How much time do MME teams spend on manual audit prep annually?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: UpGuard Can Win This Market -->
+    <div class="slide">
+        <div class="max-w-6xl w-full">
+            <h1 class="text-4xl font-bold mb-8 text-center">UpGuard Can Win This Market</h1>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <div class="card">
+                    <h2 class="text-xl font-semibold mb-6 text-blue-400">What Makes Us Different:</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i data-lucide="star" class="w-5 h-5 text-blue-500 mr-3 mt-1"></i>
+                            <div>
+                                <p class="font-semibold">Security Ratings:</p>
+                                <p class="text-sm text-gray-400">External, objective validation that competitors can't match</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="radar" class="w-5 h-5 text-blue-500 mr-3 mt-1"></i>
+                            <div>
+                                <p class="font-semibold">Attack Surface Management:</p>
+                                <p class="text-sm text-gray-400">Real-time security posture data already integrated</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="users" class="w-5 h-5 text-blue-500 mr-3 mt-1"></i>
+                            <div>
+                                <p class="font-semibold">Trust Exchange PLG:</p>
+                                <p class="text-sm text-gray-400">30,000+ security professionals already engaged with our platform</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="brain" class="w-5 h-5 text-blue-500 mr-3 mt-1"></i>
+                            <div>
+                                <p class="font-semibold">AI Capabilities:</p>
+                                <p class="text-sm text-gray-400">Can analyze architecture and suggest contextual controls</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="text-xl font-semibold mb-6 text-green-400">The Positioning Opportunity:</h2>
+                    <div class="bg-green-600/10 p-4 rounded-lg border-l-4 border-green-500 mb-4">
+                        <p class="text-xl font-bold text-green-300">
+                            "While other tools tell you if you're compliant, UpGuard proves it."
+                        </p>
+                    </div>
+                    <div class="space-y-3">
+                        <div>
+                            <p class="font-semibold text-green-300">Category:</p>
+                            <p class="text-gray-400">Continuous Compliance Intelligence</p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-green-300">Core Value:</p>
+                            <p class="text-gray-400">Generate audit-ready evidence with objective intelligence no other platform provides</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: My Discovery Approach -->
+    <div class="slide">
+        <div class="max-w-6xl w-full">
+            <h1 class="text-4xl font-bold mb-8 text-center">My Discovery Approach</h1>
+            <h2 class="text-xl text-center text-gray-400 mb-12">4-Week Market Discovery Process</h2>
+            
+            <div class="space-y-6">
+                <div class="card bg-gradient-to-br from-blue-900/20 to-blue-600/20">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <span class="w-8 h-8 bg-blue-600/30 rounded-full flex items-center justify-center mr-3 text-sm font-bold">1-2</span>
+                        Week 1-2: Market & Competitive Intelligence
+                    </h3>
+                    <p class="text-sm text-gray-400 mb-3 italic">(Phase A: Market Opportunity & Strategic Fit)</p>
+                    <div class="space-y-2">
+                        <p class="text-sm">• Deep dive on Vanta, Drata, AuditBoard, OneTrust competitive gaps</p>
+                        <p class="text-sm">• Track regulatory shifts (DORA, NIST CSF 2.0) driving market evolution</p>
+                        <p class="text-sm">• Map UpGuard's unique assets (Security Ratings, ASM, AI) against competitor limitations</p>
+                    </div>
+                </div>
+                
+                <div class="card bg-gradient-to-br from-green-900/20 to-green-600/20">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <span class="w-8 h-8 bg-green-600/30 rounded-full flex items-center justify-center mr-3 text-sm font-bold">2-3</span>
+                        Week 2-3: Customer Research
+                    </h3>
+                    <p class="text-sm text-gray-400 mb-3 italic">(Phase B: Customer Needs & Value Validation)</p>
+                    <div class="space-y-2">
+                        <p class="text-sm">• 8-10 in-depth interviews: CISOs, GRC Managers, SOC Leaders at MME companies</p>
+                        <p class="text-sm">• Internal stakeholder sessions with Product (Jess), Sales, CS, PMM (Toby)</p>
+                        <p class="text-sm">• Validate pain hypotheses and quantify manual effort with real MME users</p>
+                    </div>
+                </div>
+                
+                <div class="card bg-gradient-to-br from-purple-900/20 to-purple-600/20">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <span class="w-8 h-8 bg-purple-600/30 rounded-full flex items-center justify-center mr-3 text-sm font-bold">3-4</span>
+                        Week 3-4: Strategy Development
+                    </h3>
+                    <p class="text-sm text-gray-400 mb-3 italic">(Phase C & D: Positioning/GTM Inputs & Success Metrics)</p>
+                    <div class="space-y-2">
+                        <p class="text-sm">• Define positioning hypotheses and messaging frameworks based on validated insights</p>
+                        <p class="text-sm">• Identify GTM strategy elements and success metrics for evolved Trust Exchange</p>
+                        <p class="text-sm">• Establish collaborative execution framework for ongoing development</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: How I'll Research Customer Needs -->
+    <div class="slide">
+        <div class="max-w-6xl w-full">
+            <h1 class="text-4xl font-bold mb-8 text-center">How I'll Research Customer Needs</h1>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="card">
+                    <h2 class="text-xl font-semibold mb-6 text-blue-400">Interview Focus Areas:</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i data-lucide="settings" class="w-5 h-5 text-blue-500 mr-3 mt-1"></i>
+                            <div>
+                                <p class="font-semibold">Current Processes:</p>
+                                <p class="text-sm text-gray-400">How they handle year-round compliance and audit prep today</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="alert-triangle" class="w-5 h-5 text-blue-500 mr-3 mt-1"></i>
+                            <div>
+                                <p class="font-semibold">Specific Pain Points:</p>
+                                <p class="text-sm text-gray-400">Manual effort, integration gaps, evidence collection struggles</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="lightbulb" class="w-5 h-5 text-blue-500 mr-3 mt-1"></i>
+                            <div>
+                                <p class="font-semibold">Unmet Needs:</p>
+                                <p class="text-sm text-gray-400">What they wish tools could do for continuous monitoring and verifiable assurance</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="dollar-sign" class="w-5 h-5 text-blue-500 mr-3 mt-1"></i>
+                            <div>
+                                <p class="font-semibold">Value Perception:</p>
+                                <p class="text-sm text-gray-400">Would they pay for solutions using UpGuard's unique capabilities?</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="users" class="w-5 h-5 text-blue-500 mr-3 mt-1"></i>
+                            <div>
+                                <p class="font-semibold">Decision Dynamics:</p>
+                                <p class="text-sm text-gray-400">Who drives purchases, holds budgets, influences buying committees</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2 class="text-xl font-semibold mb-6 text-green-400">What I'll Validate:</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i data-lucide="file-search" class="w-5 h-5 text-green-500 mr-3 mt-1"></i>
+                            <div>
+                                <p class="font-semibold">Audit Evidence Gap:</p>
+                                <p class="text-sm text-gray-400">How much manual work persists despite "automated" tools</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="shield" class="w-5 h-5 text-green-500 mr-3 mt-1"></i>
+                            <div>
+                                <p class="font-semibold">Data Control Preferences:</p>
+                                <p class="text-sm text-gray-400">Demand for hybrid/on-premise deployment options</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="link" class="w-5 h-5 text-green-500 mr-3 mt-1"></i>
+                            <div>
+                                <p class="font-semibold">Integration Requirements:</p>
+                                <p class="text-sm text-gray-400">Critical gaps (Workato, Active Directory, Splunk, Workday)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="brain" class="w-5 h-5 text-green-500 mr-3 mt-1"></i>
+                            <div>
+                                <p class="font-semibold">Context Needs:</p>
+                                <p class="text-sm text-gray-400">How often current tools fail with architecture-specific controls</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 9: Discovery Will Define Key Capabilities MMEs Need -->
+    <div class="slide">
+        <div class="max-w-6xl w-full">
+            <h1 class="text-4xl font-bold mb-8 text-center">Discovery Will Define Key Capabilities MMEs Need</h1>
+            <p class="text-xl text-center text-gray-400 mb-12">Three Areas We'll Explore Based on Validated Pain Points</p>
+            
+            <div class="space-y-6">
+                <div class="card bg-gradient-to-br from-red-900/20 to-red-600/20">
+                    <h3 class="text-xl font-semibold mb-4 text-red-400">1. Automated Evidence Generation Solutions</h3>
+                    <p class="text-sm text-gray-400 italic mb-4">Discovery will explore: What evidence formats do auditors actually accept? How can we auto-generate audit-ready documentation?</p>
+                    <div class="space-y-2">
+                        <p class="text-sm">• Investigate opportunities for log snapshots, configuration screenshots, compliance documentation</p>
+                        <p class="text-sm">• Validate demand for evidence mapping to specific control requirements</p>
+                        <p class="text-sm">• Test concepts for audit-ready package generation</p>
+                    </div>
+                </div>
+                
+                <div class="card bg-gradient-to-br from-blue-900/20 to-blue-600/20">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-400">2. Smart Control Scoping Capabilities</h3>
+                    <p class="text-sm text-gray-400 italic mb-4">Discovery will define: How can AI understand MME environments and suggest relevant controls?</p>
+                    <div class="space-y-2">
+                        <p class="text-sm">• Explore integration opportunities with systems MMEs actually use</p>
+                        <p class="text-sm">• Investigate demand for architecture-aware control recommendations</p>
+                        <p class="text-sm">• Validate need for adaptive, current control libraries</p>
+                    </div>
+                </div>
+                
+                <div class="card bg-gradient-to-br from-green-900/20 to-green-600/20">
+                    <h3 class="text-xl font-semibold mb-4 text-green-400">3. Objective Compliance Validation Features</h3>
+                    <p class="text-sm text-gray-400 italic mb-4">Discovery will determine: How valuable is independent security intelligence for compliance proof?</p>
+                    <div class="space-y-2">
+                        <p class="text-sm">• Test appetite for combining internal testing with UpGuard's external data</p>
+                        <p class="text-sm">• Explore demand for independent attack surface validation</p>
+                        <p class="text-sm">• Investigate third-party evidence generation opportunities</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: Discovery Will Inform Our Go-to-Market Strategy -->
+    <div class="slide">
+        <div class="max-w-6xl w-full">
+            <h1 class="text-4xl font-bold mb-8 text-center">Discovery Will Inform Our Go-to-Market Strategy</h1>
+            <p class="text-xl text-center text-gray-400 mb-12">GTM Elements We'll Define Through Customer Research</p>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <div class="space-y-6">
+                    <div class="card bg-gradient-to-br from-blue-900/20 to-blue-600/20">
+                        <h3 class="text-lg font-semibold mb-4 text-blue-400">PLG Strategy Refinement</h3>
+                        <p class="text-sm text-gray-400 italic mb-3">(Leveraging Trust Exchange Foundation)</p>
+                        <div class="space-y-2">
+                            <p class="text-sm">• Validate optimal freemium entry points based on MME engagement patterns</p>
+                            <p class="text-sm">• Define upgrade pathways from validated customer value drivers</p>
+                            <p class="text-sm">• Test messaging that resonates with existing 30,000+ Trust Exchange user base</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card bg-gradient-to-br from-green-900/20 to-green-600/20">
+                        <h3 class="text-lg font-semibold mb-4 text-green-400">MME Sales Motion Development</h3>
+                        <div class="space-y-2">
+                            <p class="text-sm">• Identify primary decision makers and budget holders through interviews</p>
+                            <p class="text-sm">• Define value propositions based on quantified customer pain points</p>
+                            <p class="text-sm">• Establish competitive differentiation messaging against Vanta/Drata</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="card bg-gradient-to-br from-purple-900/20 to-purple-600/20">
+                        <h3 class="text-lg font-semibold mb-4 text-purple-400">Channel Strategy & Positioning</h3>
+                        <div class="space-y-2">
+                            <p class="text-sm">• Determine most effective content themes through customer language analysis</p>
+                            <p class="text-sm">• Test "Continuous Compliance Intelligence" category positioning</p>
+                            <p class="text-sm">• Validate optimal launch timing and communication channels</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card bg-gradient-to-br from-orange-900/20 to-orange-600/20">
+                        <h3 class="text-lg font-semibold mb-4 text-orange-400">Discovery Outputs:</h3>
+                        <div class="space-y-2">
+                            <p class="text-sm">• Validated target personas with specific jobs-to-be-done</p>
+                            <p class="text-sm">• Evidence-backed messaging frameworks that address real pain points</p>
+                            <p class="text-sm">• Clear PLG-to-premium pathway based on customer willingness to pay</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 11: How We'll Measure Success -->
+    <div class="slide">
+        <div class="max-w-6xl w-full">
+            <h1 class="text-4xl font-bold mb-8 text-center">How We'll Measure Success</h1>
+            
+            <div class="card bg-gradient-to-r from-blue-600/10 to-blue-500/10 border-blue-500/20 mb-8">
+                <h2 class="text-2xl font-semibold mb-4 text-center text-blue-400">North Star Metric:</h2>
+                <p class="text-xl text-center font-semibold">
+                    Monthly Active Organizations with Deep Compliance Engagement
+                </p>
+                <p class="text-center text-gray-400 mt-2">
+                    <span class="italic">(Using new features 4+/month AND monitoring 5+ critical controls with generated evidence)</span>
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="card">
+                    <h3 class="text-xl font-semibold mb-4 text-green-400">Supporting Metrics:</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>
+                            <span class="text-sm">Setup completion rate for new continuous compliance features</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>
+                            <span class="text-sm">Control coverage depth (especially custom controls that competitors struggle with)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>
+                            <span class="text-sm">Auditor acceptance rate of UpGuard-generated evidence</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>
+                            <span class="text-sm">Reduction in customer-reported manual audit prep time</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-3"></i>
+                            <span class="text-sm">Weekly dashboard engagement showing ongoing compliance posture</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 class="text-xl font-semibold mb-4 text-purple-400">Discovery Success Criteria:</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i data-lucide="target" class="w-5 h-5 text-purple-500 mr-3"></i>
+                            <span class="text-sm">70%+ of interviewed MMEs confirm audit evidence pain exists today</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="target" class="w-5 h-5 text-purple-500 mr-3"></i>
+                            <span class="text-sm">Clear willingness to pay for verifiable evidence generation capabilities</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-lucide="target" class="w-5 h-5 text-purple-500 mr-3"></i>
+                            <span class="text-sm">Validated demand for UpGuard's unique objective intelligence approach</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 12: Timeline & Next Steps -->
+    <div class="slide">
+        <div class="max-w-6xl w-full">
+            <h1 class="text-4xl font-bold mb-8 text-center">Timeline & Next Steps</h1>
+            
+            <div class="space-y-6 mb-8">
+                <div class="card bg-gradient-to-br from-blue-900/20 to-blue-600/20">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <span class="w-8 h-8 bg-blue-600/30 rounded-full flex items-center justify-center mr-3 text-sm font-bold">1</span>
+                        Week 1: Market Intelligence Foundation
+                    </h3>
+                    <div class="space-y-2">
+                        <p class="text-sm">• Competitive analysis deep-dive on Vanta, Drata, AuditBoard, OneTrust gaps</p>
+                        <p class="text-sm">• Internal stakeholder interviews with Product (Jess), Sales, CS, PMM (Toby)</p>
+                        <p class="text-sm">• Refine hypotheses based on collective UpGuard knowledge</p>
+                    </div>
+                </div>
+                
+                <div class="card bg-gradient-to-br from-green-900/20 to-green-600/20">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <span class="w-8 h-8 bg-green-600/30 rounded-full flex items-center justify-center mr-3 text-sm font-bold">2-3</span>
+                        Week 2-3: Customer Discovery Deep Dive
+                    </h3>
+                    <div class="space-y-2">
+                        <p class="text-sm">• 8-10 MME customer interviews with CISOs, GRC Managers, SOC Leaders</p>
+                        <p class="text-sm">• Pain point validation and quantification with real users</p>
+                        <p class="text-sm">• Persona development workshops with Product and Sales teams</p>
+                    </div>
+                </div>
+                
+                <div class="card bg-gradient-to-br from-purple-900/20 to-purple-600/20">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <span class="w-8 h-8 bg-purple-600/30 rounded-full flex items-center justify-center mr-3 text-sm font-bold">4</span>
+                        Week 4: Strategy Synthesis & Planning
+                    </h3>
+                    <div class="space-y-2">
+                        <p class="text-sm">• Positioning and messaging framework development</p>
+                        <p class="text-sm">• GTM plan with clear PLG-to-premium pathway</p>
+                        <p class="text-sm">• Success metrics definition and Product roadmap inputs</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card bg-gradient-to-r from-blue-600/10 to-green-600/10 border-blue-500/20">
+                <h3 class="text-2xl font-semibold mb-4 text-center">Deliverable:</h3>
+                <p class="text-center text-lg text-gray-400">
+                    <span class="text-blue-500 font-semibold">Evidence-backed strategy foundation</span> for Trust Exchange evolution, ready for Product collaboration and executive alignment with clear next steps.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 13: Why This Approach Works -->
+    <div class="slide">
+        <div class="max-w-6xl w-full">
+            <h1 class="text-4xl font-bold mb-12 text-center">Why This Approach Works</h1>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+                <div class="card bg-gradient-to-br from-blue-900/20 to-blue-600/20">
+                    <h3 class="text-xl font-semibold mb-6 flex items-center">
+                        <i data-lucide="users" class="w-6 h-6 text-blue-500 mr-3"></i>
+                        Rooted in Customer Reality
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <i data-lucide="check" class="w-4 h-4 text-blue-500 mr-2 mt-1"></i>
+                            <span class="text-sm">Direct validation of pain points through expert interviews</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="check" class="w-4 h-4 text-blue-500 mr-2 mt-1"></i>
+                            <span class="text-sm">Competitive gaps confirmed by actual user sentiment (G2, forums)</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="check" class="w-4 h-4 text-blue-500 mr-2 mt-1"></i>
+                            <span class="text-sm">Solution framework built on proven UpGuard differentiators</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card bg-gradient-to-br from-green-900/20 to-green-600/20">
+                    <h3 class="text-xl font-semibold mb-6 flex items-center">
+                        <i data-lucide="zap" class="w-6 h-6 text-green-500 mr-3"></i>
+                        Collaborative & Agile
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2 mt-1"></i>
+                            <span class="text-sm">Weekly synthesis sessions with Product, Sales, CS</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2 mt-1"></i>
+                            <span class="text-sm">Shared documentation and transparent process</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="check" class="w-4 h-4 text-green-500 mr-2 mt-1"></i>
+                            <span class="text-sm">Iterative approach allows for rapid learning and adjustment</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card bg-gradient-to-br from-purple-900/20 to-purple-600/20">
+                    <h3 class="text-xl font-semibold mb-6 flex items-center">
+                        <i data-lucide="target" class="w-6 h-6 text-purple-500 mr-3"></i>
+                        Business Impact Focused
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <i data-lucide="check" class="w-4 h-4 text-purple-500 mr-2 mt-1"></i>
+                            <span class="text-sm">Clear success metrics tied to customer value</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="check" class="w-4 h-4 text-purple-500 mr-2 mt-1"></i>
+                            <span class="text-sm">ROI-driven messaging and value propositions</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-lucide="check" class="w-4 h-4 text-purple-500 mr-2 mt-1"></i>
+                            <span class="text-sm">PLG-to-premium pathway leverages existing assets</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-green-600/10 border-blue-500/30">
+                <h3 class="text-3xl font-bold mb-6 text-center">The Result:</h3>
+                <p class="text-xl text-center text-gray-400">
+                    A <span class="text-blue-500 font-semibold">differentiated, defensible position</span> in the growing MME continuous compliance market.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="nav-controls">
+        <button class="btn" onclick="prevSlide()" id="prevBtn">
+            <i data-lucide="chevron-left" class="w-4 h-4"></i>
+        </button>
+        
+        <div class="flex items-center space-x-2">
+            <span class="text-sm font-medium text-gray-400" id="slideCounter">
+                1 / 13
+            </span>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 7.7%"></div>
+            </div>
+        </div>
+        
+        <button class="btn" onclick="nextSlide()" id="nextBtn">
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+        </button>
+    </div>
+
+    <!-- Slide Dots -->
+    <div class="slide-dots" id="slideDots">
+        <div class="dot active" onclick="goToSlide(0)"></div>
+        <div class="dot" onclick="goToSlide(1)"></div>
+        <div class="dot" onclick="goToSlide(2)"></div>
+        <div class="dot" onclick="goToSlide(3)"></div>
+        <div class="dot" onclick="goToSlide(4)"></div>
+        <div class="dot" onclick="goToSlide(5)"></div>
+        <div class="dot" onclick="goToSlide(6)"></div>
+        <div class="dot" onclick="goToSlide(7)"></div>
+        <div class="dot" onclick="goToSlide(8)"></div>
+        <div class="dot" onclick="goToSlide(9)"></div>
+        <div class="dot" onclick="goToSlide(10)"></div>
+        <div class="dot" onclick="goToSlide(11)"></div>
+        <div class="dot" onclick="goToSlide(12)"></div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function updateSlide() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+
+            // Update dots
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+
+            // Update progress
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('slideCounter').textContent = `${currentSlide + 1} / ${totalSlides}`;
+
+            // Update buttons
+            document.getElementById('prevBtn').style.opacity = currentSlide === 0 ? '0.5' : '1';
+            document.getElementById('nextBtn').style.opacity = currentSlide === totalSlides - 1 ? '0.5' : '1';
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlide();
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            switch(e.code) {
+                case 'ArrowRight':
+                case 'Space':
+                    e.preventDefault();
+                    nextSlide();
+                    break;
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    prevSlide();
+                    break;
+                case 'Home':
+                    e.preventDefault();
+                    goToSlide(0);
+                    break;
+                case 'End':
+                    e.preventDefault();
+                    goToSlide(totalSlides - 1);
+                    break;
+            }
+        });
+
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Initial update
+        updateSlide();
+    </script>
+</body>
+</html> 
