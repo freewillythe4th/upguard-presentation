@@ -934,6 +934,15 @@
             }
         });
 
+        // Click anywhere to advance slide
+        document.addEventListener('click', (e) => {
+            // Don't advance if clicking on controls, links, or buttons
+            if (e.target.closest('.nav-controls') || e.target.closest('.slide-dots') || e.target.closest('button') || e.target.tagName === 'A') {
+                return;
+            }
+            nextSlide();
+        });
+
         // Initialize Lucide icons
         lucide.createIcons();
         
